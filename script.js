@@ -26,11 +26,12 @@ const btnReset = document.getElementById("reset");
 //funzione di reset
 
 const toReset = function () {
-  const resettinArray = JSON.parse(localStorage.getItem("nameSaved"));
+  let resettinArray = JSON.parse(localStorage.getItem("nameSaved"));
 
   resettinArray.forEach((name) => {
     if (resettinArray.length > 0) {
       resettinArray.pop();
+      localStorage.setItem("nameSaved", JSON.stringify(resettinArray));
     }
   });
 };
@@ -46,5 +47,5 @@ const intervallo = setInterval(() => {
   i++;
   timer.innerText = i;
   form.appendChild(timer);
-  sessionStorage.getItem("counter", i);
+  sessionStorage.getItem("counter", JSON.stringify(i));
 }, 1000);
